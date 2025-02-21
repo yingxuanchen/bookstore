@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class BookService {
@@ -32,7 +30,7 @@ public class BookService {
         book.setAuthor(bookDTO.author());
         book.setDescription(bookDTO.description());
         book.setYearOfPublish(bookDTO.yearOfPublish());
-        book.setLanguage(bookDTO.language());
+        book.setBookLanguage(bookDTO.bookLanguage());
         book.setCategories(bookDTO.categories());
         book.setTags(bookDTO.tags());
         book.setPrice(bookDTO.price());

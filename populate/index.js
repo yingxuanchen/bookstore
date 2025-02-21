@@ -29,7 +29,7 @@ async function insertBook(book) {
     author: book.author,
     description: generateDescription(),
     yearOfPublish: yearOfPublish,
-    language: lang,
+    bookLanguage: lang,
     categories: cats,
     tags: book.tags,
     price: getRandomPrice(3.99, 50),

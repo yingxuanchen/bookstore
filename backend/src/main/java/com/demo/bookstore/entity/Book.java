@@ -17,7 +17,7 @@ public class Book {
     private String author;
     private String description;
     private int yearOfPublish;
-    private String language;
+    private String bookLanguage;
     private List<String> categories;
     private List<String> tags;
     private BigDecimal price;

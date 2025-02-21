@@ -7,11 +7,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Stack,
   TextField,
-  Typography,
 } from "@mui/material";
 import { useCallback, useContext, useEffect, useState } from "react";
 import fetcher from "../utils/fetcher";
@@ -121,7 +119,7 @@ function AddBook() {
               helperText={errors.yearOfPublish?.message}
             />
             <Controller
-              name="language"
+              name="bookLanguage"
               control={control}
               rules={{ required: "Language is required" }}
               render={({ field: { ref, onChange, value, ...field } }) => (
@@ -138,8 +136,8 @@ function AddBook() {
                       inputRef={ref}
                       label="Language"
                       variant="standard"
-                      error={errors.language ? true : false}
-                      helperText={errors.language?.message}
+                      error={errors.bookLanguage ? true : false}
+                      helperText={errors.bookLanguage?.message}
                     />
                   )}
                 />

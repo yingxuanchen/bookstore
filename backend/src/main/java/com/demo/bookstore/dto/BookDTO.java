@@ -9,7 +9,7 @@ public record BookDTO(
         String author,
         String description,
         int yearOfPublish,
-        String language,
+        String bookLanguage,
         List<String> categories,
         List<String> tags,
         BigDecimal price,

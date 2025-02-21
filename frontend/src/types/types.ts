@@ -4,12 +4,13 @@ export interface Book {
   author: string;
   description: string;
   yearOfPublish: number;
-  language: string;
+  bookLanguage: string;
   categories: string[];
   tags: string[];
   price: number;
   soldCount: number;
   rating: number;
+  createdBy: string;
 }
 
 export type BookForm = {
@@ -17,7 +18,7 @@ export type BookForm = {
   author: string;
   description: string;
   yearOfPublish: number;
-  language: string;
+  bookLanguage: string;
   categories: string[];
   tags: string[];
   price: string;
