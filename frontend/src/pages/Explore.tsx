@@ -73,7 +73,7 @@ function Explore() {
     switch (colId) {
       case "title":
       case "author":
-        return <Highlighter searchWords={[debouncedSearch]} textToHighlight={value as string} autoEscape />;
+        return <Highlighter searchWords={debouncedSearch.split(" ")} textToHighlight={value as string} autoEscape />;
       case "categories":
         return (value as string[]).join("\n");
       case "rating":
@@ -87,7 +87,7 @@ function Explore() {
       switch (field) {
         case "Description":
         case "Tags":
-          htmlToDisplay = <Highlighter searchWords={[debouncedSearch]} textToHighlight={value} autoEscape />;
+          htmlToDisplay = <Highlighter searchWords={debouncedSearch.split(" ")} textToHighlight={value} autoEscape />;
           break;
         default:
           htmlToDisplay = value;

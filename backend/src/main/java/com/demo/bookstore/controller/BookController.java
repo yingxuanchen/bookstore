@@ -22,7 +22,7 @@ public class BookController {
     @GetMapping
     Page<Book> findBooks(
             @RequestParam(defaultValue = "", name = "src") String searchInput,
-            @PageableDefault(sort = {"rating", "id"}, direction = Sort.Direction.DESC, size = 10) Pageable pageable
+            @PageableDefault(size = 10) Pageable pageable
     ) {
         return bookService.findBooks(searchInput, pageable);
     }

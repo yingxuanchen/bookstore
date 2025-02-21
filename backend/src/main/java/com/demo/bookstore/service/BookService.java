@@ -7,7 +7,10 @@ import com.demo.bookstore.repository.BookElasticRepository;
 import com.demo.bookstore.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +20,15 @@ public class BookService {
     private final BookElasticRepository bookElasticRepo;
 
     public Page<Book> findBooks(String searchInput, Pageable pageable) {
-        return bookRepo.findByTitleLikeIgnoreCase(searchInput, pageable);
+//        return bookRepo.findByTitleLikeIgnoreCase(searchInput, pageable);
+
+        if (searchInput.isBlank()) {
+            return bookRepo.findAll(pageable);
+        } else {
+            TextCriteria criteria = TextCriteria.forDefaultLanguage().matching(searchInput);
+            Pageable pageAndSort = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("score"));
+            return bookRepo.findAllBy(criteria, pageAndSort);
+        }
     }
 
     public Page<BookElastic> findBooksElastic(String searchInput, Pageable pageable) {
