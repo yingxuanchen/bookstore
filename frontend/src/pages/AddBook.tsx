@@ -61,7 +61,7 @@ function AddBook() {
     setOpenModal(false);
   };
 
-  const onSubmit: SubmitHandler<BookForm> = (data) => {
+  const onSubmit: SubmitHandler<BookForm> = (_data) => {
     setOpenModal(true);
   };
 

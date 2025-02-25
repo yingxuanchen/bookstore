@@ -30,7 +30,7 @@ public class Book {
     private List<String> tags;
     private BigDecimal price;
     private int soldCount;
-    private double rating;
+    private Rating rating;
 
     private String content;
 

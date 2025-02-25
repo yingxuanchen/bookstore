@@ -9,11 +9,16 @@ export interface Book {
   tags: string[];
   price: number;
   soldCount: number;
-  rating: number;
+  rating: Rating;
   createdBy: string;
 }
 
-export type BookForm = {
+export interface Rating {
+  average: number;
+  reviews: number;
+}
+
+export interface BookForm {
   title: string;
   author: string;
   description: string;
@@ -22,7 +27,7 @@ export type BookForm = {
   categories: string[];
   tags: string[];
   price: string;
-};
+}
 
 // export interface Category {
 //   name: string;

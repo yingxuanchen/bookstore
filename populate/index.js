@@ -24,6 +24,8 @@ async function insertBook(book) {
   const createdDate = getRandomDate(new Date(Math.max(yearOfPublish, 2020), 1, 1), new Date());
   const updatedDate = getRandomInt(0, 2) === 0 ? createdDate : getRandomDate(createdDate, new Date());
 
+  const soldCount = getRandomInt(0, 100000);
+
   book = {
     title: book.title,
     author: book.author,
@@ -33,8 +35,14 @@ async function insertBook(book) {
     categories: cats,
     tags: book.tags,
     price: getRandomPrice(3.99, 50),
-    soldCount: getRandomInt(0, 100000),
-    rating: getRandomInt(0, 10) === 0 ? -1 : getRandomRating(0, 10),
+    soldCount: soldCount,
+    rating:
+      getRandomInt(0, 10) === 0
+        ? { average: 0, reviews: 0 }
+        : {
+            average: getRandomRating(1, 10),
+            reviews: getRandomInt(1, soldCount),
+          },
     content: generateContent(),
     createdBy: seller,
     createdAt: createdDate,

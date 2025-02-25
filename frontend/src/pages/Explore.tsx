@@ -17,7 +17,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
 import fetcher from "../utils/fetcher";
-import { Book } from "../types/types";
+import { Book, Rating } from "../types/types";
 import useDebounce from "../hooks/useDebounce";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -77,7 +77,7 @@ function Explore() {
       case "categories":
         return (value as string[]).join("\n");
       case "rating":
-        return value === -1 ? "-" : (value as number).toFixed(1);
+        return (value as Rating).reviews === 0 ? "-" : (value as Rating).average.toFixed(1);
     }
   };
 
