@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class AdminController {
+
     private final AdminService adminService;
 
     @GetMapping("categories")

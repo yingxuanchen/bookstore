@@ -29,6 +29,19 @@ export interface BookForm {
   price: string;
 }
 
+export interface LoginForm {
+  username: string;
+  password: string;
+}
+
+export interface SignupForm {
+  username: string;
+  password: string;
+  confirmPassword: string;
+  email: string;
+  isSeller: boolean;
+}
+
 // export interface Category {
 //   name: string;
 // }

@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AdminService {
+
     private final CategoryRepository categoryRepo;
     private final LanguageRepository languageRepo;
 

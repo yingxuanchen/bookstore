@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("books")
 @Slf4j
 public class BookController {
+
     private final BookService bookService;
 
     @GetMapping

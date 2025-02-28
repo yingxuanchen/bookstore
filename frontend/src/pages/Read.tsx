@@ -1,26 +1,27 @@
 import {
-  Card,
-  Collapse,
-  IconButton,
-  InputAdornment,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TextField,
   Typography,
+  TextField,
+  InputAdornment,
+  TablePagination,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  IconButton,
+  Collapse,
+  Card,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import { ChangeEvent, Fragment, useCallback, useEffect, useState } from "react";
-import fetcher from "../utils/fetcher";
-import { Book, Rating } from "../types/types";
+import { useState, useEffect, useCallback, ChangeEvent } from "react";
+import Highlighter from "react-highlight-words";
+import { Fragment } from "react/jsx-runtime";
 import useDebounce from "../hooks/useDebounce";
+import { Book, Rating } from "../types/types";
+import fetcher from "../utils/fetcher";
+import Grid from "@mui/material/Grid2";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Grid from "@mui/material/Grid2";
-import Highlighter from "react-highlight-words";
+import SearchIcon from "@mui/icons-material/Search";
 
 const columns: { id: keyof Book; label: string }[] = [
   { id: "title", label: "Title" },
@@ -29,7 +30,7 @@ const columns: { id: keyof Book; label: string }[] = [
   { id: "rating", label: "Rating" },
 ];
 
-function Explore() {
+function Read() {
   const [books, setBooks] = useState<Book[]>([]);
   const [searchInput, setSearchInput] = useState<string>("");
   const debouncedSearch = useDebounce(searchInput, 800);
@@ -181,4 +182,4 @@ function Explore() {
   );
 }
 
-export default Explore;
+export default Read;

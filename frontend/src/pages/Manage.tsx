@@ -114,7 +114,7 @@ function Manage() {
           </Tabs>
         </Box>
         <Box sx={{ marginTop: 1 }}>
-          <Button variant="outlined" onClick={handleModalOpen}>
+          <Button variant="outlined" sx={{ textAlign: "left" }} onClick={handleModalOpen}>
             Add {tabs[tabIndex].label}
           </Button>
           <List>
@@ -122,11 +122,11 @@ function Manage() {
               <ListItem
                 key={item}
                 disablePadding
-                secondaryAction={
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
-                  </IconButton>
-                }
+                // secondaryAction={
+                //   <IconButton edge="end" aria-label="delete">
+                //     <DeleteIcon />
+                //   </IconButton>
+                // }
               >
                 <ListItemButton>
                   <ListItemText primary={item} />

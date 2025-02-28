@@ -25,9 +25,9 @@ public class Book {
     private String description;
     private int yearOfPublish;
     private String bookLanguage;
-    private List<String> categories;
+    private List<String> categories = List.of();
     @TextIndexed
-    private List<String> tags;
+    private List<String> tags = List.of();
     private BigDecimal price;
     private int soldCount;
     private Rating rating;
