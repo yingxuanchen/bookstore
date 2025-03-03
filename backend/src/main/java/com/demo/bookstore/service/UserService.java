@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class UserService {
 
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
@@ -53,5 +53,9 @@ public class AuthService {
 
         String jwt = jwtUtils.generateJwt(user.getUsername());
         return new UserDTO(user.getUsername(), user.getRoles(), jwt);
+    }
+
+    public List<User> getPaymentMethods(String username) {
+        return userRepo.findPaymentMethods(username);
     }
 }

@@ -49,3 +49,9 @@ export interface SignupForm {
 // export interface Language {
 //   name: string;
 // }
+
+export interface CreditCardForm {
+  cardNumber: string;
+  cardExpiry: string;
+  cvv: number;
+}

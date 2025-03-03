@@ -1,5 +1,5 @@
 import {
-  Card,
+  Button,
   Collapse,
   IconButton,
   InputAdornment,
@@ -144,9 +144,13 @@ function Explore() {
         <TableBody>
           {books.map((book) => (
             <Fragment key={book.id}>
-              <TableRow sx={{ "& > *": { borderBottom: "unset !important" } }}>
+              <TableRow
+                hover
+                sx={{ "& > *": { borderBottom: "unset !important" } }}
+                onClick={() => handleExpandRow(book.id)}
+              >
                 <TableCell sx={{ width: 0 }}>
-                  <IconButton aria-label="expand row" size="small" onClick={() => handleExpandRow(book.id)}>
+                  <IconButton aria-label="expand row" size="small">
                     {expandedRow === book.id ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
                   </IconButton>
                 </TableCell>
@@ -157,19 +161,21 @@ function Explore() {
               <TableRow>
                 <TableCell colSpan={5} sx={{ paddingBottom: 0, paddingTop: 0 }}>
                   <Collapse in={expandedRow === book.id} timeout="auto" unmountOnExit>
-                    <Card sx={{ marginLeft: "4rem" }}>
-                      <Grid container>
+                    <Grid container sx={{ marginLeft: "4rem" }} spacing={1}>
+                      <Grid container size={10.5} spacing={0}>
                         <Grid size={12}>{expandedField("Description", book.description)}</Grid>
                         <Grid size={6}>{expandedField("Year of Publication", book.yearOfPublish)}</Grid>
                         <Grid size={6}>{expandedField("Language", book.bookLanguage)}</Grid>
-                        <Grid size={6}>{expandedField("Price", `$${book.price}`)}</Grid>
-                        <Grid size={6}>
+                        <Grid size={12}>
                           {expandedField("Tags", book.tags.length === 0 ? "-" : book.tags.join(", "))}
                         </Grid>
                         <Grid size={6}>{expandedField("Sold Count", book.soldCount)}</Grid>
                         <Grid size={6}>{expandedField("Seller", book.createdBy)}</Grid>
                       </Grid>
-                    </Card>
+                      <Grid size={1.5}>
+                        <Button variant="contained">Buy at ${book.price}</Button>
+                      </Grid>
+                    </Grid>
                   </Collapse>
                 </TableCell>
               </TableRow>

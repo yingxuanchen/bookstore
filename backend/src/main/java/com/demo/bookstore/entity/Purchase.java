@@ -1,24 +1,24 @@
 package com.demo.bookstore.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Document
-public class User {
+public class Purchase {
     @Id
     private String id;
+    private Payment payment;
+    private BigDecimal amount;
+    private Book book;
     private String username;
-    private String password;
-    private String email;
-    private List<String> roles = List.of();
-    private List<PaymentMethod> paymentMethods = List.of();
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -26,9 +26,16 @@ public class User {
     private LocalDateTime updatedAt;
 
     @Data
-    public static class PaymentMethod {
+    public static class Payment {
+        private String transactionId;
         private String method;
         private String cardNumber;
-        private String cardExpiry;
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class Book {
+        private String bookId;
+        private String title;
     }
 }
