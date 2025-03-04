@@ -4,6 +4,7 @@ import com.demo.bookstore.dto.LoginRequest;
 import com.demo.bookstore.dto.SignupRequest;
 import com.demo.bookstore.dto.UserDTO;
 import com.demo.bookstore.entity.User;
+import com.demo.bookstore.repository.CustomUserRepository;
 import com.demo.bookstore.repository.UserRepository;
 import com.demo.bookstore.security.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class UserService {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
+    private final CustomUserRepository customUserRepo;
 
     public UserDTO login(LoginRequest req) {
         User user = userRepo.findByUsername(req.username());
@@ -55,7 +57,11 @@ public class UserService {
         return new UserDTO(user.getUsername(), user.getRoles(), jwt);
     }
 
-    public List<User> getPaymentMethods(String username) {
-        return userRepo.findPaymentMethods(username);
+    public List<User.PaymentMethod> getPaymentMethods(String username) {
+//        return customUserRepo.findPaymentMethods(username);
+
+        return userRepo.findPaymentMethods(username).stream()
+                .flatMap(user -> user.getPaymentMethods().stream())
+                .toList();
     }
 }

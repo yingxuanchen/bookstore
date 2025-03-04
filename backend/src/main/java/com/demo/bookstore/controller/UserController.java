@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("payment")
-    List<User> getPaymentMethods(Authentication authentication) {
+    List<User.PaymentMethod> getPaymentMethods(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return userService.getPaymentMethods(user.getUsername());
     }
